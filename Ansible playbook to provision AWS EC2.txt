@@ -1,0 +1,19 @@
+---
+# Playbook to provision ec2
+
+ - hosts: localhost
+   connection: local
+   gather_facts: false
+   tasks:
+     - name: EC2 create
+       ec2:
+         image: "ami-7172b611"
+         instance_type: "t2.micro"
+         key_name: "nkv-keypair"
+         wait: yes
+         group_id: "sg-7adc871c"
+         count: "1"
+         region: "us-west-2"
+         vpc_subnet_id: "subnet-d633ebb2"
+         assign_public_ip: "yes"
+...
